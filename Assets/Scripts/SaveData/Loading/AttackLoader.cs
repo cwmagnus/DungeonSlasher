@@ -1,30 +1,33 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Loads attacks from resources.
-/// </summary>
-public class AttackLoader : MonoBehaviour, IObjectLoader
+namespace DungeonSlasher
 {
-    [SerializeField] private string attackName;
-
     /// <summary>
-    /// Load attack from start.
+    /// Loads attacks from resources.
     /// </summary>
-    private void Start()
+    public class AttackLoader : MonoBehaviour, IObjectLoader
     {
-        if (!attackName.Equals("None"))
+        [SerializeField] private string attackName;
+
+        /// <summary>
+        /// Load attack from start.
+        /// </summary>
+        private void Start()
         {
-            Load("Attacks/" + attackName);
+            if (!attackName.Equals("None"))
+            {
+                Load("Attacks/" + attackName);
+            }
         }
-    }
 
-    /// <summary>
-    /// Load an attack from resources.
-    /// </summary>
-    /// <param name="attackPath">Path to the attack resource.</param>
-    public void Load(string attackPath)
-    {
-        GameObject attackPrefab = Resources.Load<GameObject>(attackPath);
-        Instantiate(attackPrefab, transform);
+        /// <summary>
+        /// Load an attack from resources.
+        /// </summary>
+        /// <param name="attackPath">Path to the attack resource.</param>
+        public void Load(string attackPath)
+        {
+            GameObject attackPrefab = Resources.Load<GameObject>(attackPath);
+            Instantiate(attackPrefab, transform);
+        }
     }
 }
