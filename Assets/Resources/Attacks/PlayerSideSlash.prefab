@@ -22,9 +22,9 @@ GameObject:
   - component: {fileID: 222562775723368278}
   - component: {fileID: 114300947732351270}
   - component: {fileID: 114204223274622526}
-  - component: {fileID: 114507135760952414}
+  - component: {fileID: 114829873611447480}
   m_Layer: 5
-  m_Name: SideSlash
+  m_Name: PlayerSideSlash
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -98,7 +98,7 @@ MonoBehaviour:
   m_FillAmount: 1
   m_FillClockwise: 1
   m_FillOrigin: 0
---- !u!114 &114507135760952414
+--- !u!114 &114829873611447480
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -106,14 +106,15 @@ MonoBehaviour:
   m_GameObject: {fileID: 1220346969706210}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cd29199a979fc34489eca06e15673a64, type: 3}
+  m_Script: {fileID: 11500000, guid: 44f8631f7749246269e0945a88639f9c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  attackAnimationName: Attack 02
-  damage: 20
+  damage: 15
   range: 3
-  attackDuration: 0.4
-  cooldownTime: 1
+  duration: 0.5
+  cooldown: 1
+  animationName: Attack 02
+  playerTag: Player
 --- !u!222 &222562775723368278
 CanvasRenderer:
   m_ObjectHideFlags: 1
