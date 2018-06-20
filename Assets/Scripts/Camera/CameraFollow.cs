@@ -1,46 +1,49 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Makes the camera follow a target.
-/// </summary>
-public class CameraFollow : MonoBehaviour
+namespace DungeonSlasher
 {
-    [SerializeField] private string targetTagName;
-    [SerializeField] private float damp;
-    private Vector3 offset;
-
     /// <summary>
-    /// Set the offset based on pre-existing position.
+    /// Makes the camera follow a target.
     /// </summary>
-    private void Start()
+    public class CameraFollow : MonoBehaviour
     {
-        offset = transform.position;
-    }
+        [SerializeField] private string targetTagName;
+        [SerializeField] private float damp;
+        private Vector3 offset;
 
-    /// <summary>
-    /// Damp towards the target position.
-    /// </summary>
-    private void Update()
-    {
-        Transform target = FindTarget(targetTagName);
-        if (target != null)
+        /// <summary>
+        /// Set the offset based on pre-existing position.
+        /// </summary>
+        private void Start()
         {
-            Vector3 movementVector = offset + target.position;
-            Vector3 velocity = Vector3.zero;
-
-            transform.position = Vector3.SmoothDamp(transform.position, movementVector,
-                ref velocity, Time.deltaTime * damp);
+            offset = transform.position;
         }
-    }
 
-    /// <summary>
-    /// Find the target transform.
-    /// </summary>
-    /// <param name="targetTag">Tag of the target to find.</param>
-    /// <returns>Found target.</returns>
-    private Transform FindTarget(string targetTag)
-    {
-        Transform target = GameObject.FindGameObjectWithTag(targetTag).transform;
-        return target;
+        /// <summary>
+        /// Damp towards the target position.
+        /// </summary>
+        private void Update()
+        {
+            Transform target = FindTarget(targetTagName);
+            if (target != null)
+            {
+                Vector3 movementVector = offset + target.position;
+                Vector3 velocity = Vector3.zero;
+
+                transform.position = Vector3.SmoothDamp(transform.position, movementVector,
+                    ref velocity, Time.deltaTime * damp);
+            }
+        }
+
+        /// <summary>
+        /// Find the target transform.
+        /// </summary>
+        /// <param name="targetTag">Tag of the target to find.</param>
+        /// <returns>Found target.</returns>
+        private Transform FindTarget(string targetTag)
+        {
+            Transform target = GameObject.FindGameObjectWithTag(targetTag).transform;
+            return target;
+        }
     }
 }

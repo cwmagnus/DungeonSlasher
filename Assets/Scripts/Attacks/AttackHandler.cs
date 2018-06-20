@@ -1,25 +1,28 @@
 ﻿using UnityEngine;
 using UnityEngine.UI;
 
-/// <summary>
-/// Handles attack button clicks.
-/// </summary>
-[RequireComponent(typeof(Button))]
-public abstract class AttackHandler : MonoBehaviour
+namespace DungeonSlasher
 {
-    protected Button attackButton;
-
     /// <summary>
-    /// Bind the attack function to the attack button.
+    /// Handles attack button clicks.
     /// </summary>
-    private void Awake()
+    [RequireComponent(typeof(Button))]
+    public abstract class AttackHandler : MonoBehaviour
     {
-        attackButton = GetComponent<Button>();
-        attackButton.onClick.AddListener(Attack);
-    }
+        protected Button attackButton;
 
-    /// <summary>
-    /// Attack function called on click.
-    /// </summary>
-    public abstract void Attack();
+        /// <summary>
+        /// Bind the attack function to the attack button.
+        /// </summary>
+        private void Awake()
+        {
+            attackButton = GetComponent<Button>();
+            attackButton.onClick.AddListener(Attack);
+        }
+
+        /// <summary>
+        /// Attack function called on click.
+        /// </summary>
+        public abstract void Attack();
+    }
 }

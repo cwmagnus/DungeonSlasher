@@ -1,75 +1,78 @@
 ﻿using UnityEngine;
 
-/// <summary>
-/// Moves the player using a nav mesh agent.
-/// </summary>
-class PlayerMovement : EntityMovement
+namespace DungeonSlasher
 {
-    [SerializeField] private float destinationRotationSpeed;
-
     /// <summary>
-    /// Update before player movement.
+    /// Moves the player using a nav mesh agent.
     /// </summary>
-    protected override void PreUpdateMovement()
+    class PlayerMovement : EntityMovement
     {
-        SetDestination("Enemy");
-    }
+        [SerializeField] private float destinationRotationSpeed;
 
-    /// <summary>
-    /// Update player movement.
-    /// </summary>
-    protected override void UpdateMovement()
-    {
-        if (InDestinationDistance())
+        /// <summary>
+        /// Update before player movement.
+        /// </summary>
+        protected override void PreUpdateMovement()
         {
-            Stop();
-
-            // Look at target over time
-            Vector3 direction = target.position - transform.position;
-            direction.y = 0;
-            Quaternion rotation = Quaternion.LookRotation(direction);
-            transform.rotation = Quaternion.Slerp(transform.rotation, rotation, 
-                Time.deltaTime * destinationRotationSpeed);
+            SetDestination("Enemy");
         }
-    }
 
-    /// <summary>
-    /// Scan for enemy targets.
-    /// </summary>
-    /// <returns>Found target.</returns>
-    protected override Transform ScanForTarget(string targetName)
-    {
-        Transform enemyTarget = null;
-        float closestDistance = Mathf.Infinity;
-
-        // Find the closest enemy if possible
-        foreach (var enemy in GameObject.FindGameObjectsWithTag(targetName))
+        /// <summary>
+        /// Update player movement.
+        /// </summary>
+        protected override void UpdateMovement()
         {
-            Vector3 directionToTarget = enemy.transform.position - transform.position;
-            float distanceToTarget = directionToTarget.sqrMagnitude;
-            if (distanceToTarget < closestDistance)
+            if (InDestinationDistance())
             {
-                closestDistance = distanceToTarget;
-                enemyTarget = enemy.transform;
+                Stop();
 
-                // Remove target if they are dead
+                // Look at target over time
+                Vector3 direction = target.position - transform.position;
+                direction.y = 0;
+                Quaternion rotation = Quaternion.LookRotation(direction);
+                transform.rotation = Quaternion.Slerp(transform.rotation, rotation,
+                    Time.deltaTime * destinationRotationSpeed);
+            }
+        }
+
+        /// <summary>
+        /// Scan for enemy targets.
+        /// </summary>
+        /// <returns>Found target.</returns>
+        protected override Transform ScanForTarget(string targetName)
+        {
+            Transform enemyTarget = null;
+            float closestDistance = Mathf.Infinity;
+
+            // Find the closest enemy if possible
+            foreach (var enemy in GameObject.FindGameObjectsWithTag(targetName))
+            {
+                Vector3 directionToTarget = enemy.transform.position - transform.position;
+                float distanceToTarget = directionToTarget.sqrMagnitude;
+                if (distanceToTarget < closestDistance)
+                {
+                    closestDistance = distanceToTarget;
+                    enemyTarget = enemy.transform;
+
+                    // Remove target if they are dead
+                    if (enemyTarget.GetComponent<Health>().OutOfHealth())
+                    {
+                        enemy.tag = "EnemyDead";
+                        enemyTarget = null;
+                    }
+                }
+            }
+
+            // Lose target if enemy is out of health
+            if (enemyTarget != null)
+            {
                 if (enemyTarget.GetComponent<Health>().OutOfHealth())
                 {
-                    enemy.tag = "EnemyDead";
                     enemyTarget = null;
                 }
             }
-        }
 
-        // Lose target if enemy is out of health
-        if (enemyTarget != null)
-        {
-            if (enemyTarget.GetComponent<Health>().OutOfHealth())
-            {
-                enemyTarget = null;
-            }
+            return enemyTarget;
         }
-
-        return enemyTarget;
     }
 }

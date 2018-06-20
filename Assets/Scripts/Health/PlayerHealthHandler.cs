@@ -1,31 +1,34 @@
-﻿/// <summary>
-/// Handle player health events.
-/// </summary>
-public class PlayerHealthHandler : HealthHandler
+﻿namespace DungeonSlasher
 {
     /// <summary>
-    /// Take damage event.
+    /// Handle player health events.
     /// </summary>
-    /// <param name="damage">Damage taken.</param>
-    protected override void TakeDamage(float damage)
+    public class PlayerHealthHandler : HealthHandler
     {
-        
-    }
+        /// <summary>
+        /// Take damage event.
+        /// </summary>
+        /// <param name="damage">Damage taken.</param>
+        protected override void TakeDamage(float damage)
+        {
 
-    /// <summary>
-    /// Heal damage event.
-    /// </summary>
-    /// <param name="damage">Damaged healed.</param>
-    protected override void HealDamage(float damage)
-    {
-        
-    }
+        }
 
-    /// <summary>
-    /// Out of health event.
-    /// </summary>
-    protected override void OutOfHealth()
-    {
+        /// <summary>
+        /// Heal damage event.
+        /// </summary>
+        /// <param name="damage">Damaged healed.</param>
+        protected override void HealDamage(float damage)
+        {
 
+        }
+
+        /// <summary>
+        /// Out of health event.
+        /// </summary>
+        protected override void OutOfHealth()
+        {
+
+        }
     }
 }
