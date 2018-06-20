@@ -328,8 +328,8 @@ GameObject:
   - component: {fileID: 95292648383727484}
   - component: {fileID: 195427521882616300}
   - component: {fileID: 114548648889729436}
-  - component: {fileID: 114709013573871214}
-  - component: {fileID: 114063349655929388}
+  - component: {fileID: 114418548579160690}
+  - component: {fileID: 114521107161021966}
   m_Layer: 0
   m_Name: MedievalKnight-Blue
   m_TagString: Player
@@ -1180,7 +1180,7 @@ Animator:
   m_HasTransformHierarchy: 1
   m_AllowConstantClipSamplingOptimization: 1
   m_KeepAnimatorControllerStateOnDisable: 0
---- !u!114 &114063349655929388
+--- !u!114 &114418548579160690
 MonoBehaviour:
   m_ObjectHideFlags: 1
   m_PrefabParentObject: {fileID: 0}
@@ -1188,10 +1188,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 1564784518677628}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 281439f7632dcef4ebf82707a774b46d, type: 3}
+  m_Script: {fileID: 11500000, guid: 582afdb32c1de47b58d76f03d19310da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+--- !u!114 &114521107161021966
+MonoBehaviour:
+  m_ObjectHideFlags: 1
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1564784518677628}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 041e59ccd59d14cd0acc3d9635aee637, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  maxHealth: 50
 --- !u!114 &114548648889729436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1205,17 +1216,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   destinationDistanceBuffer: 2
   destinationRotationSpeed: 5
---- !u!114 &114709013573871214
-MonoBehaviour:
-  m_ObjectHideFlags: 1
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 100100000}
-  m_GameObject: {fileID: 1564784518677628}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 27eed964d452431469bb7e4ad3bc157b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!137 &137981571588513684
 SkinnedMeshRenderer:
   m_ObjectHideFlags: 1

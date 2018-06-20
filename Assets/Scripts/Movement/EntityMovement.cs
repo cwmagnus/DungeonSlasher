@@ -14,7 +14,7 @@ namespace DungeonSlasher
         protected NavMeshAgent agent;
         protected Animator animator;
         protected Transform target;
-        protected bool stopped = false;
+        protected bool stopped;
 
         /// <summary>
         /// Get components.
