@@ -9,8 +9,7 @@ namespace DungeonSlasher
     [RequireComponent(typeof(Button))]
     public abstract class PlayerAttack : Attack
     {
-        [SerializeField, Tooltip("Player tag to look for.")]
-        protected string playerTag;
+        [SerializeField] protected string playerTag;
         protected Button attackButton;
         protected GameObject player;
         protected bool foundPlayer;

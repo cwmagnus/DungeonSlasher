@@ -7,18 +7,12 @@ namespace DungeonSlasher
     /// </summary>
     public abstract class Attack : MonoBehaviour
     {
-        [Header("Attack Properties")]
-        [SerializeField, Tooltip("Amount of damage the attack will do.")] 
-        protected float damage;
-        [SerializeField, Tooltip("Attack range.")] 
-        protected float range;
-        [SerializeField, Tooltip("How long the attack lasts.")]
-        protected float duration;
-        [SerializeField, Tooltip("How often the attack can be used.")] 
-        protected float cooldown;
+        [SerializeField] protected float damage;
+        [SerializeField] protected float range;
+        [SerializeField] protected float duration;
+        [SerializeField] protected float cooldown;
         protected float maxCooldown;
-        [SerializeField, Tooltip("Name of the attack animation to play.")]
-        protected string animationName;
+        [SerializeField] protected string animationName;
         protected bool attacking;
 
         /// <summary>
