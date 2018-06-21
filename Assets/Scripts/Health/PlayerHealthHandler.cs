@@ -1,4 +1,6 @@
-﻿namespace DungeonSlasher
+﻿using UnityEngine;
+
+namespace DungeonSlasher
 {
     /// <summary>
     /// Handle player health events.
@@ -11,7 +13,7 @@
         /// <param name="damage">Damage taken.</param>
         protected override void TakeDamage(float damage)
         {
-
+            Debug.Log(damage);
         }
 
         /// <summary>

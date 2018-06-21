@@ -963,6 +963,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: PlayerSideSlash
+  attackGroup: Player
 --- !u!1 &666856410
 GameObject:
   m_ObjectHideFlags: 0
@@ -1114,6 +1115,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: None
+  attackGroup: 
 --- !u!1 &705069258
 GameObject:
   m_ObjectHideFlags: 0
@@ -1251,6 +1253,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   attackName: None
+  attackGroup: 
 --- !u!1 &777886280
 GameObject:
   m_ObjectHideFlags: 0
@@ -2147,6 +2150,7 @@ GameObject:
   - component: {fileID: 1664377709}
   - component: {fileID: 1664377705}
   - component: {fileID: 1664377704}
+  - component: {fileID: 1664377710}
   m_Layer: 0
   m_Name: MedievalKnight-Green
   m_TagString: Enemy
@@ -2247,6 +2251,22 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   destinationDistanceBuffer: 2
+--- !u!114 &1664377710
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1664377703}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 90526e704cb4e4bb08de157c117fd1df, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  attackGroup: EnemySword
+  attackVariance:
+    min: 0
+    max: 3
+  targetVariance: 2.9
 --- !u!1 &1749801041
 GameObject:
   m_ObjectHideFlags: 0
