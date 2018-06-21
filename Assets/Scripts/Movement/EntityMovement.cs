@@ -61,6 +61,15 @@ namespace DungeonSlasher
         }
 
         /// <summary>
+        /// Get the distance away from the destination.
+        /// </summary>
+        /// <returns>Distance from destination.</returns>
+        public float GetDestinationDistance()
+        {
+            return Vector3.Distance(agent.destination, transform.position);
+        }
+
+        /// <summary>
         /// External stop function.
         /// </summary>
         public void StopWalk()

@@ -8,6 +8,7 @@ namespace DungeonSlasher
     public class AttackLoader : MonoBehaviour, IObjectLoader
     {
         [SerializeField] private string attackName;
+        [SerializeField] private string attackGroup;
 
         /// <summary>
         /// Load attack from start.
@@ -16,7 +17,7 @@ namespace DungeonSlasher
         {
             if (!attackName.Equals("None"))
             {
-                Load("Attacks/" + attackName);
+                Load("Attacks/" + attackGroup + '/' + attackName);
             }
         }
 

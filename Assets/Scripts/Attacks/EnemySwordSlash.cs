@@ -4,17 +4,17 @@ using UnityEngine;
 namespace DungeonSlasher
 {
     /// <summary>
-    /// Basic player sword attack action.
+    /// Basic enemy sword attack action.
     /// </summary>
-    public class PlayerSwordSlash : PlayerAttack
+    public class EnemySwordSlash : EnemyAttack
     {
         /// <summary>
         /// Update when attacking.
         /// </summary>
         protected override void OnAttacking()
         {
-            // Get the player's movement component
-            PlayerMovement movement = player.GetComponent<PlayerMovement>();
+            // Get the enemy's movement component
+            EnemyMovement movement = transform.parent.GetComponent<EnemyMovement>();
 
             // Check if the player is not idle to set walking animation
             if (movement.IsIdle())
@@ -25,19 +25,19 @@ namespace DungeonSlasher
         }
 
         /// <summary>
-        /// Use the player's sword attack.
+        /// Use the enemy's sword attack.
         /// </summary>
         protected override void Attack()
         {
-            // Get the player's movement component
-            PlayerMovement movement = player.GetComponent<PlayerMovement>();
+            // Get the enemy's movement component
+            EnemyMovement movement = transform.parent.GetComponent<EnemyMovement>();
 
             // Handle movement and animations
             movement.StopWalk();
             movement.Attack(animationName);
 
-            // Damage the enemy
-            StartCoroutine("DamageEnemy");
+            // Damage the player
+            StartCoroutine("DamagePlayer");
 
             // Reset attack status
             cooldown = maxCooldown;
@@ -45,9 +45,9 @@ namespace DungeonSlasher
         }
 
         /// <summary>
-        /// Damage the enemy if there is one.
+        /// Damage the player if there is one.
         /// </summary>
-        private IEnumerator DamageEnemy()
+        private IEnumerator DamagePlayer()
         {
             // Wait for the attack duration to end
             float attackTime = duration;
@@ -55,18 +55,19 @@ namespace DungeonSlasher
             {
                 attackTime -= Time.deltaTime;
 
-                // Attack the enemy
+                // Attack the player
                 if (attackTime <= 0)
                 {
-                    // Check if attack hit an enemy
+                    // Check if attack hit an player
                     RaycastHit hit;
-                    if (RaycastTarget("EnemyRaycast", player.transform.position,
-                                      player.transform.TransformDirection(Vector3.forward),
+                    if (RaycastTarget("PlayerRaycast", transform.parent.position,
+                                      transform.parent.TransformDirection(Vector3.forward),
                                       out hit))
                     {
-                        // Damage the enemy
-                        Health enemyHealth = hit.transform.parent.GetComponent<Health>();
-                        if (enemyHealth != null) enemyHealth.TakeDamage(damage);
+                        Debug.Log("Test");
+                        // Damage the player
+                        Health playerHealth = hit.transform.parent.GetComponent<Health>();
+                        if (playerHealth != null) playerHealth.TakeDamage(damage);
                     }
                 }
 

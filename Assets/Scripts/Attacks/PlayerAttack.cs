@@ -52,7 +52,7 @@ namespace DungeonSlasher
         /// <summary>
         /// Use the attack.
         /// </summary>
-        protected override void UseAttack()
+        public override void UseAttack()
         {
             if (foundPlayer)
             {
