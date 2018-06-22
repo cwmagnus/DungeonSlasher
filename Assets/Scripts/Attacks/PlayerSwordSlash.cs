@@ -34,10 +34,10 @@ namespace DungeonSlasher
 
             // Handle movement and animations
             movement.StopWalk();
-            movement.Attack(animationName);
+            movement.Action(animationName);
 
             // Damage the enemy
-            StartCoroutine("DamageEnemy");
+            StartCoroutine("DamageEntity");
 
             // Reset attack status
             cooldown = maxCooldown;
@@ -47,8 +47,11 @@ namespace DungeonSlasher
         /// <summary>
         /// Damage the enemy if there is one.
         /// </summary>
-        private IEnumerator DamageEnemy()
+        protected override IEnumerator DamageEntity()
         {
+            // Get the player's movement component
+            PlayerMovement movement = player.GetComponent<PlayerMovement>();
+
             // Wait for the attack duration to end
             float attackTime = duration;
             while (attackTime > 0)
@@ -58,15 +61,19 @@ namespace DungeonSlasher
                 // Attack the enemy
                 if (attackTime <= 0)
                 {
-                    // Check if attack hit an enemy
-                    RaycastHit hit;
-                    if (RaycastTarget("EnemyRaycast", player.transform.position,
-                                      player.transform.TransformDirection(Vector3.forward),
-                                      out hit))
+                    // Make sure the player is still playing the attack animation
+                    if (movement.IsAction(animationName))
                     {
-                        // Damage the enemy
-                        Health enemyHealth = hit.transform.parent.GetComponent<Health>();
-                        if (enemyHealth != null) enemyHealth.TakeDamage(damage);
+                        // Check if attack hit an enemy
+                        RaycastHit hit;
+                        if (RaycastTarget("EnemyRaycast", player.transform.position,
+                                          player.transform.TransformDirection(Vector3.forward),
+                                          out hit))
+                        {
+                            // Damage the enemy
+                            Health enemyHealth = hit.transform.parent.GetComponent<Health>();
+                            if (enemyHealth != null) enemyHealth.TakeDamage(damage);
+                        }
                     }
                 }
 

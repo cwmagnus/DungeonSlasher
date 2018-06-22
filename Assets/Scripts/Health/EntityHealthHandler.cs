@@ -4,16 +4,13 @@ using UnityEngine;
 namespace DungeonSlasher
 {
     /// <summary>
-    /// Handle enemy health events.
+    /// Handle standard entity health events.
     /// </summary>
-    [RequireComponent(typeof(Animator))]
-    //[RequireComponent(typeof(EnemyMovement))]
-    public class EnemyHealthHandler : HealthHandler
+    public class EntityHealthHandler : HealthHandler
     {
-        [SerializeField] private Color flashColor;
-        [SerializeField] private float flashDuration;
+        [SerializeField] private Flash damageFlash;
+        [SerializeField] private Flash healFlash;
         private Color originalColor;
-        private Animator animator;
         private SkinnedMeshRenderer meshRenderer;
 
         /// <summary>
@@ -21,18 +18,17 @@ namespace DungeonSlasher
         /// </summary>
         private void Start()
         {
-            animator = GetComponent<Animator>();
             meshRenderer = transform.GetComponentInChildren<SkinnedMeshRenderer>();
             originalColor = meshRenderer.material.color;
         }
 
         /// <summary>
-        /// Check if the enemy is dead.
+        /// Check if the entity is dead.
         /// </summary>
         private void Update()
         {
             // Destroy if dead
-            if (animator.GetCurrentAnimatorStateInfo(0).IsName("Dead"))
+            if (movement.IsDead())
             {
                 Destroy(gameObject);
             }
@@ -44,8 +40,7 @@ namespace DungeonSlasher
         /// <param name="damage">Damage taken.</param>
         protected override void TakeDamage(float damage)
         {
-            StartCoroutine("FlashHit");
-            animator.SetTrigger("Hit");
+            StartCoroutine("Flash", damageFlash);
         }
 
         /// <summary>
@@ -54,7 +49,7 @@ namespace DungeonSlasher
         /// <param name="damage">Damaged healed.</param>
         protected override void HealDamage(float damage)
         {
-
+            StartCoroutine("Flash", healFlash);
         }
 
         /// <summary>
@@ -62,23 +57,23 @@ namespace DungeonSlasher
         /// </summary>
         protected override void OutOfHealth()
         {
-            animator.SetTrigger("Die");
+            movement.Action("Die");
         }
 
         /// <summary>
         /// Flash animation on hit.
         /// </summary>
         /// <returns>Null every cycle.</returns>
-        private IEnumerator FlashHit()
+        private IEnumerator Flash(Flash flash)
         {
             // How long to flash
-            float flashTime = flashDuration;
+            float flashTime = flash.duration;
 
             // Delay by flash time
             while (flashTime > 0)
             {
                 // Flash on hit
-                meshRenderer.material.color = flashColor;
+                meshRenderer.material.color = flash.color;
                 flashTime -= Time.deltaTime;
 
                 yield return null;
@@ -86,6 +81,7 @@ namespace DungeonSlasher
 
             // Revert to original color
             meshRenderer.material.color = originalColor;
+            movement.StartWalk();
         }
     }
 }

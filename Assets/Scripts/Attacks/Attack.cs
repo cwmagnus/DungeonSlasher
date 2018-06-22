@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 namespace DungeonSlasher
 {
@@ -56,5 +57,11 @@ namespace DungeonSlasher
         /// Use the attack.
         /// </summary>
         public abstract void UseAttack();
+
+        /// <summary>
+        /// Damage entity coroutine.
+        /// </summary>
+        /// <returns>Coroutine yield.</returns>
+        protected abstract IEnumerator DamageEntity();
     }
 }

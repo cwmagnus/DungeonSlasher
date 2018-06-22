@@ -45,6 +45,11 @@ namespace DungeonSlasher
             if (InDestinationDistance() || health.OutOfHealth())
             {
                 Stop();
+            } 
+
+            if (InDestinationDistance())
+            {
+                RotateTowardsTarget();
             }
         }
     }

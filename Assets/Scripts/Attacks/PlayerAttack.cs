@@ -54,7 +54,7 @@ namespace DungeonSlasher
         /// </summary>
         public override void UseAttack()
         {
-            if (foundPlayer)
+            if (foundPlayer && GameStateManager.Playing())
             {
                 if (cooldown <= 0) Attack();
             }

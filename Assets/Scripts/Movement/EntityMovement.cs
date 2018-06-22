@@ -11,6 +11,7 @@ namespace DungeonSlasher
     public abstract class EntityMovement : MonoBehaviour
     {
         [SerializeField] protected float destinationDistanceBuffer;
+        [SerializeField] private float destinationRotationSpeed;
         protected NavMeshAgent agent;
         protected Animator animator;
         protected Transform target;
@@ -30,12 +31,15 @@ namespace DungeonSlasher
         /// </summary>
         private void Update()
         {
-            PreUpdateMovement();
-
-            if (target != null)
+            if (GameStateManager.Playing())
             {
-                agent.isStopped = !animator.GetBool("Walk");
-                UpdateMovement();
+                PreUpdateMovement();
+
+                if (target != null)
+                {
+                    agent.isStopped = !animator.GetBool("Walk");
+                    UpdateMovement();
+                }
             }
         }
 
@@ -70,6 +74,18 @@ namespace DungeonSlasher
         }
 
         /// <summary>
+        /// Rotates the entity towards the target over time.
+        /// </summary>
+        public void RotateTowardsTarget()
+        {
+            Vector3 direction = target.position - transform.position;
+            direction.y = 0;
+            Quaternion rotation = Quaternion.LookRotation(direction);
+            transform.rotation = Quaternion.Slerp(transform.rotation, rotation,
+                Time.deltaTime * destinationRotationSpeed);
+        }
+
+        /// <summary>
         /// External stop function.
         /// </summary>
         public void StopWalk()
@@ -88,21 +104,40 @@ namespace DungeonSlasher
         }
 
         /// <summary>
-        /// Check if the player is id
+        /// Check if entity is idle.
         /// </summary>
-        /// <returns>State of idle.</returns>
+        /// <returns><c>true</c>, if idle, <c>false</c> otherwise.</returns>
         public bool IsIdle()
         {
             return animator.GetCurrentAnimatorStateInfo(0).IsName("Idle");
         }
 
         /// <summary>
-        /// Player the attack animation.
+        /// Check if the entity is dead.
         /// </summary>
-        /// <param name="attackName">Attack to use.</param>
-        public void Attack(string attackName)
+        /// <returns><c>true</c>, if dead, <c>false</c> if alive.</returns>
+        public bool IsDead()
         {
-            animator.SetTrigger(attackName);
+            return animator.GetCurrentAnimatorStateInfo(0).IsName("Dead");
+        }
+
+        /// <summary>
+        /// Check if the action is going on.
+        /// </summary>
+        /// <returns><c>true</c>, if action, <c>false</c> otherwise.</returns>
+        /// <param name="actionName">Name of the action.</param>
+        public bool IsAction(string actionName)
+        {
+            return animator.GetCurrentAnimatorStateInfo(0).IsName(actionName);
+        }
+
+        /// <summary>
+        /// Play the action animation.
+        /// </summary>
+        /// <param name="actionName">Action to use.</param>
+        public void Action(string actionName)
+        {
+            animator.SetTrigger(actionName);
         }
 
         /// <summary>

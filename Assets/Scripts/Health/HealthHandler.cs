@@ -6,19 +6,24 @@ namespace DungeonSlasher
     /// Handle health events.
     /// </summary>
     [RequireComponent(typeof(Health))]
+    [RequireComponent(typeof(EntityMovement))]
     public abstract class HealthHandler : MonoBehaviour
     {
         protected Health health;
+        protected EntityMovement movement;
 
         /// <summary>
-        /// Get the health component.
+        /// Get components.
         /// </summary>
         protected void Awake()
         {
+            // Get and bind functions to the health component
             health = GetComponent<Health>();
             health.OnDamage += TakeDamage;
             health.OnHealDamage += HealDamage;
             health.OnOutOfHealth += OutOfHealth;
+
+            movement = GetComponent<EntityMovement>();
         }
 
         /// <summary>

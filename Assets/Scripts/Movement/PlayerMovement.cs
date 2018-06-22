@@ -7,8 +7,6 @@ namespace DungeonSlasher
     /// </summary>
     class PlayerMovement : EntityMovement
     {
-        [SerializeField] private float destinationRotationSpeed;
-
         /// <summary>
         /// Update before player movement.
         /// </summary>
@@ -26,12 +24,7 @@ namespace DungeonSlasher
             {
                 Stop();
 
-                // Look at target over time
-                Vector3 direction = target.position - transform.position;
-                direction.y = 0;
-                Quaternion rotation = Quaternion.LookRotation(direction);
-                transform.rotation = Quaternion.Slerp(transform.rotation, rotation,
-                    Time.deltaTime * destinationRotationSpeed);
+                RotateTowardsTarget();
             }
         }
 
