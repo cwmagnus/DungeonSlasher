@@ -44,6 +44,7 @@ namespace DungeonSlasher
             GameStateManager.SetState(GameState.PLAYING);
             GetPanel("PlayPanel").SetActive(false);
             GetPanel("AttackPanel").SetActive(true);
+            GetPanel("TopPanel").SetActive(true);
         }
     }
 }
