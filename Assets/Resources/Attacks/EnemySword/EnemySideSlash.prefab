@@ -54,5 +54,5 @@ MonoBehaviour:
   damage: 10
   range: 3
   duration: 0.5
-  cooldown: 1
+  cooldown: 1.5
   animationName: Attack 02

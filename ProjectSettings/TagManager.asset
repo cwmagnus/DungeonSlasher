@@ -7,9 +7,9 @@ TagManager:
   - Enemy
   - PlayerRaycast
   - EnemyRaycast
-  - EnemyDead
   - EnemyAttack
   - PlayerAttack
+  - Dead
   layers:
   - Default
   - TransparentFX

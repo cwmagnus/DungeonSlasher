@@ -70,7 +70,6 @@ namespace DungeonSlasher
                                           transform.parent.TransformDirection(Vector3.forward),
                                           out hit))
                         {
-                            Debug.Log("Test");
                             // Damage the player
                             Health playerHealth = hit.transform.parent.GetComponent<Health>();
                             if (playerHealth != null) playerHealth.TakeDamage(damage);

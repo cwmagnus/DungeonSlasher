@@ -1191,7 +1191,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 041e59ccd59d14cd0acc3d9635aee637, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  maxHealth: 100
+  maxHealth: 200
 --- !u!114 &114548648889729436
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -1216,7 +1216,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 171e52495469948e0a74a92ac9d63d79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  ownerType: Player
   damageFlash:
     color: {r: 0.7830189, g: 0.39215687, b: 0.39215687, a: 0.39215687}
     duration: 0.15

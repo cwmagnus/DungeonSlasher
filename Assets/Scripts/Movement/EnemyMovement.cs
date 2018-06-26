@@ -24,6 +24,7 @@ namespace DungeonSlasher
         protected override void PreUpdateMovement()
         {
             SetDestination("Player");
+            ManuallySelectTarget("Player");
         }
 
         /// <summary>

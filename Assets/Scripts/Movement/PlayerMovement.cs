@@ -13,6 +13,8 @@ namespace DungeonSlasher
         protected override void PreUpdateMovement()
         {
             SetDestination("Enemy");
+            ManuallySelectTarget("Enemy");
+
         }
 
         /// <summary>
@@ -46,13 +48,6 @@ namespace DungeonSlasher
                 {
                     closestDistance = distanceToTarget;
                     enemyTarget = enemy.transform;
-
-                    // Remove target if they are dead
-                    if (enemyTarget.GetComponent<Health>().OutOfHealth())
-                    {
-                        enemy.tag = "EnemyDead";
-                        enemyTarget = null;
-                    }
                 }
             }
 

@@ -44,6 +44,26 @@ namespace DungeonSlasher
         }
 
         /// <summary>
+        /// Manually select a target.
+        /// </summary>
+        protected void ManuallySelectTarget(string targetTag)
+        {
+            // Check if there is touches on the screen
+            if (Input.touchCount > 0)
+            {
+                RaycastHit hit;
+                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
+                if (Physics.Raycast(ray, out hit))
+                {
+                    if (hit.transform.tag == targetTag + "Raycast")
+                    {
+                        target = hit.transform.parent;
+                    }
+                }
+            }
+        }
+
+        /// <summary>
         /// Stop the agent.
         /// </summary>
         public void Stop()
@@ -146,11 +166,22 @@ namespace DungeonSlasher
         /// <param name="targetTag">Tag of target to go to.</param>
         public void SetDestination(string targetTag)
         {
-            target = ScanForTarget(targetTag);
             if (target != null && !stopped)
             {
                 agent.destination = target.position;
                 animator.SetBool("Walk", true);
+
+                // Remove target if they are dead
+                if (target.GetComponent<Health>().OutOfHealth())
+                {
+                    target.tag = "Dead";
+                    target = null;
+                }
+            }
+            else if (!stopped)
+            {
+                target = ScanForTarget(targetTag);
+                animator.SetBool("Walk", false);
             }
             else
             {
