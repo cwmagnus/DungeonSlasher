@@ -1,9 +1,10 @@
 fileFormatVersion: 2
-guid: ca58dbd734dd5496aace43a778ada124
+guid: ff38566c4234e4f88a4ff8b67796b436
 TextureImporter:
   fileIDToRecycleName:
     21300000: TopPanel
-    21300002: AttackPanel
+    21300002: SideSlashIcon
+    21300004: AttackPanel
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -60,7 +61,7 @@ TextureImporter:
   platformSettings:
   - serializedVersion: 2
     buildTarget: DefaultTexturePlatform
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -71,7 +72,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Standalone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -82,7 +83,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: iPhone
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -93,7 +94,7 @@ TextureImporter:
     androidETC2FallbackOverride: 0
   - serializedVersion: 2
     buildTarget: Android
-    maxTextureSize: 1024
+    maxTextureSize: 2048
     resizeAlgorithm: 0
     textureFormat: -1
     textureCompression: 1
@@ -120,7 +121,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 769b3e29b4ff146c5a6607e0ea5e3a5e
+      spriteID: ee85b5f0695a8438db3b86cbbf86b1a0
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: SideSlashIcon
+      rect:
+        serializedVersion: 2
+        x: 688
+        y: 276
+        width: 172
+        height: 172
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a67eb5161c139449c9bb0731f9c01483
       vertices: []
       indices: 
       edges: []
@@ -140,7 +161,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 324ccfa1ca4944480bce325d8fcec634
+      spriteID: ffeb236522dd14f5292b9cc06e3edc06
       vertices: []
       indices: 
       edges: []
@@ -148,7 +169,7 @@ TextureImporter:
     outline: []
     physicsShape: []
     bones: []
-    spriteID: c4b8aa0eb58f04eb081c50db8aa28fa0
+    spriteID: 45802868f43034bf89e352c4882c54dd
     vertices: []
     indices: 
     edges: []
