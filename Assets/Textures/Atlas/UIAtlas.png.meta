@@ -119,13 +119,13 @@ TextureImporter:
         width: 600
         height: 200
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 24b1ec9925e9fcd48b4642a31e0ce047
+      spriteID: 89e0fae1584a1f245a760cdcf16a796e
       vertices: []
       indices: 
       edges: []
@@ -134,18 +134,18 @@ TextureImporter:
       name: HealthIcon
       rect:
         serializedVersion: 2
-        x: 613
-        y: 384
-        width: 64
-        height: 64
+        x: 616
+        y: 392
+        width: 56
+        height: 56
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: d4007a0727cf4e34c9d2a12c9358999c
+      spriteID: 42ac9c9c01b23504e999489cae415b06
       vertices: []
       indices: 
       edges: []
@@ -159,13 +159,13 @@ TextureImporter:
         width: 172
         height: 172
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f260a93f24bedcb459bdba7aa1542530
+      spriteID: 3eda69c58f85d5e48be07cf9bed55439
       vertices: []
       indices: 
       edges: []
@@ -179,13 +179,13 @@ TextureImporter:
         width: 680
         height: 240
       alignment: 0
-      pivot: {x: 0.5, y: 0.5}
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1f2bcd33a72323746b7f4eef948072f0
+      spriteID: 4d59f7858a8283744a525fb6c8943bbc
       vertices: []
       indices: 
       edges: []
