@@ -5,6 +5,10 @@ TextureImporter:
     21300000: TopPanel
     21300002: SideSlashIcon
     21300004: AttackPanel
+    21300006: TopPanel
+    21300008: HealthIcon
+    21300010: SideSlashIcon
+    21300012: AttackPanel
   externalObjects: {}
   serializedVersion: 5
   mipmaps:
@@ -121,7 +125,27 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ee85b5f0695a8438db3b86cbbf86b1a0
+      spriteID: 24b1ec9925e9fcd48b4642a31e0ce047
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: HealthIcon
+      rect:
+        serializedVersion: 2
+        x: 613
+        y: 384
+        width: 64
+        height: 64
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d4007a0727cf4e34c9d2a12c9358999c
       vertices: []
       indices: 
       edges: []
@@ -141,7 +165,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: a67eb5161c139449c9bb0731f9c01483
+      spriteID: f260a93f24bedcb459bdba7aa1542530
       vertices: []
       indices: 
       edges: []
@@ -161,7 +185,7 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: ffeb236522dd14f5292b9cc06e3edc06
+      spriteID: 1f2bcd33a72323746b7f4eef948072f0
       vertices: []
       indices: 
       edges: []
