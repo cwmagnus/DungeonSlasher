@@ -26,6 +26,11 @@ namespace DungeonSlasher
             animator = GetComponent<Animator>();
         }
 
+        private void Start()
+        {
+            StartWalk();
+        }
+
         /// <summary>
         /// Update every frame.
         /// </summary>
@@ -37,7 +42,7 @@ namespace DungeonSlasher
 
                 if (target != null)
                 {
-                    agent.isStopped = !animator.GetBool("Walk");
+                    //agent.isStopped = !animator.GetBool("Walk");
                     UpdateMovement();
                 }
             }
@@ -48,17 +53,13 @@ namespace DungeonSlasher
         /// </summary>
         protected void ManuallySelectTarget(string targetTag)
         {
-            // Check if there is touches on the screen
-            if (Input.touchCount > 0)
+            RaycastHit hit;
+            Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
+            if (Physics.Raycast(ray, out hit))
             {
-                RaycastHit hit;
-                Ray ray = Camera.main.ScreenPointToRay(Input.GetTouch(0).position);
-                if (Physics.Raycast(ray, out hit))
+                if (hit.transform.tag == targetTag + "Raycast")
                 {
-                    if (hit.transform.tag == targetTag + "Raycast")
-                    {
-                        target = hit.transform.parent;
-                    }
+                    target = hit.transform.parent;
                 }
             }
         }
@@ -69,7 +70,7 @@ namespace DungeonSlasher
         public void Stop()
         {
             agent.isStopped = true;
-            agent.velocity = Vector3.zero;
+            //agent.velocity = Vector3.zero;
             animator.SetBool("Walk", false);
         }
 
